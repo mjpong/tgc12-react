@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import axios from "axios";
 
 class SurveyForm extends React.Component {
     state = {
@@ -8,7 +9,9 @@ class SurveyForm extends React.Component {
         'items': [],
         'newColor': 'red',
         'newCountry': '',
-        'fruits':[]
+        'fruits':[],
+        "mountedFruits": "",
+        "all_fruits": []
     }
 
     countries = [
@@ -107,6 +110,31 @@ class SurveyForm extends React.Component {
         )
     }
 
+    componentDidMount(){
+        axios.get('./fruits.json').then( (r) =>{
+            this.setState({
+                all_fruits: r.data 
+            })
+            }
+        );
+    }
+
+    renderFruits(){
+        let options = [];
+        for (let fruits of this.state.all_fruits){
+            let e = (
+                <React.Fragment key={fruits.value}>
+                    <input name= "mountedFruits" type="radio" value={fruits.value}
+                    checked= {this.state.mountedFruits === fruits.value}
+                    onChange={this.updateFormField}
+                    />
+                    {fruits.display}
+                </React.Fragment>)
+            options.push(e)     
+        }
+        return options;
+    }
+
     render() {
         return (
             <React.Fragment >
@@ -176,8 +204,11 @@ class SurveyForm extends React.Component {
                                 onChange={this.updateCheckBox}/>{f.display}
                         </React.Fragment>
                     ))}
-
                 </div>
+                <div>
+                <label>Component Did Mount All Fruits</label>
+                {this.renderFruits()}
+                </div> 
 
                 <button onClick={this.showFormValue}>Submit</button>
             </React.Fragment >
