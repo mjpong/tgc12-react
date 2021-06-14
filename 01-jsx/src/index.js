@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ImageFrame from './ImageFrame';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <ImageFrame/>
   </React.StrictMode>,
   document.getElementById('root')
 );

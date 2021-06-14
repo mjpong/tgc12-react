@@ -22,6 +22,7 @@ function App() {
       <BorderedImageFrame image={ljs}/>
       <BorderedImageFrame image={burger}/>
       <AddTwo n1={2} n2={3}/>
+   
     </React.Fragment>
   );
 }
@@ -70,4 +71,5 @@ function AddTwo(props) {
     </React.Fragment>
   )
 }
+
 export default App;

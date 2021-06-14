@@ -1,6 +1,8 @@
 
 import './App.css';
 import AlertBox from "./AlertBox"
+import NumberBox from "./NumberBox"
+
 
 
 function App() {
@@ -8,6 +10,7 @@ function App() {
     <div className="App">
       <AlertBox message= "Goodbye"></AlertBox>
       <AlertBox message= "Hello"></AlertBox>  
+      <NumberBox />
     </div>
   );
 }

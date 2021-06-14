@@ -1,3 +1,5 @@
+//with generic function
+
 import React from "react";
 
 export default class BMI extends React.Component {
